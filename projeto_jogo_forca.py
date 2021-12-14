@@ -1,3 +1,4 @@
+import random
 
 def palavras():
     palavras_secretas = {'keys': ['_','_','_','_'],'Reversed': ['_','_','_','_','_','_','_','_'],'input': ['_','_','_','_','_'],
@@ -24,7 +25,7 @@ def game(palavra_secr,tracos_forca, numero_de_chances):
     if chute in palavra_secr:        # Se chute/letra do usuário está na palavra 'upper' ele entra na condicional
         ind = 0
         for letra in palavra_secr:         # Percorrendo cada letra da CHAVE/ variável palavra
-            # print(letra)
+            
             if chute == letra:      # Se chute/letra do usuário é igual a variável letra, então vai ser adicionado a letra na lista que está dentro do dicionário
                 tracos_forca[ind] = letra        # na posição de acordo com o valor do índice (ind)
                 print('Acertou!',tracos_forca[0], tracos_forca[1], tracos_forca[2], tracos_forca[3], tracos_forca[4])
@@ -47,8 +48,8 @@ def qtd_nome_dos_players():
         print('Deu zebra. É possível jogar apenas com 2 a 4 jogadores.')
         multiplayers = input('Entre com o número de jogadores: [2] jogadores, [3] jogadores ou [4] jogadores\n>>> ')
         
-    for player in range(1,int(multiplayers)+1):     # De acordo com a quantidade de players/jogadores perguntará os nomes
-        name_pl = input(f'\n\tDigite o nome do jogador {player}: ')
+    for player in range( int(multiplayers) ):     # De acordo com a quantidade de players/jogadores perguntará os nomes
+        name_pl = input(f'\n\tDigite o nome do jogador { player +1 }: ')
         names_players.append(name_pl)
     
     return (multiplayers, names_players)        # Retornando a quantidade de jogadores e a lista de nomes dos jogadores
@@ -69,9 +70,12 @@ def multiplayer(quantidade_de_jogadores, nomes_dos_jogadores):
 
     ps = palavras()     # Chamando o dicionario com as palavras secretas e traços da forca 
     print(ps)
-    
+
+
+    plvr_aleatoria = palavra_aleatoria_dici(ps)             
+        
     for palavra, forca in ps.items():   # PALAVRA e FORCA percorre o dicionário palavras_secretas, respectivamente,
-        if palavra == 'upper':
+        if palavra == plvr_aleatoria:
             
             enforcou, acertou, chances = False, False, 6
             while enforcou == False and acertou == False:    # Enquanto chances vale + que 0 e a forca ainda está incompleta vai loopar.
@@ -83,7 +87,7 @@ def multiplayer(quantidade_de_jogadores, nomes_dos_jogadores):
                 print('Enforcou! Tente na próxima.')
             elif acertou == True:
                 print('Parabéns, Você acertou todas as palavras!!', palavra.capitalize())
-    
+                
 
 # Chamando a função com os nomes e as quantidades de jogadores       
 (qtd_jogadores, nomes_jogadores) = qtd_nome_dos_players()
@@ -97,3 +101,9 @@ elif qtd_jogadores == 3:
     multiplayers3 = multiplayer(qtd_jogadores, nomes_jogadores)
 else:
     multiplayers4 = multiplayer(qtd_jogadores, nomes_jogadores)
+    
+    
+# Atualizações:
+# 13/12/21 > Implementação da palavra aleatória
+# 13/12/21 > escolha do usuário de continuar/sair do jogo
+# 13/12/21 > Correção de bug nos tracinhos da forca
