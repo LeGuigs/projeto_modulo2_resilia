@@ -104,7 +104,8 @@ def mensagem_mais_tracinhos_da_forca(msg, palavra_secreta, forca):     # De acor
         print(msg, forca[0], forca[1], forca[2], forca[3], forca[4], forca[5], forca[6], forca[7], forca[8])
 
 def game(palavra_secr,tracos_forca, numero_de_chances):
-        
+    
+    caracteres_especiais = '!@#$%¨&(){[}]~^//<?>ºª'    
     falta_na_forca = tracos_forca.count('_')       # Indicador de forca incompleta ou não
     print(f'\nVocê tem {numero_de_chances} chances e {falta_na_forca} letras para acertar')
     
@@ -123,6 +124,10 @@ def game(palavra_secr,tracos_forca, numero_de_chances):
                 print('\n \n \n')
                 
             ind += 1
+    
+    elif chute in caracteres_especiais:
+        print(f'Caracter especial usado ({chute}). Tente novamente!')           
+    
     else:                       # Senão, chances -1 até chegar 0
         numero_de_chances -= 1
         mensagem_mais_tracinhos_da_forca('\nErrou!! ', palavra_secr, tracos_forca)      # trancinhos vão aparecer de acordo com a quantidade de letras da palavra
@@ -213,6 +218,4 @@ else:
     
     
 # Atualizações:
-# 13/12/21 > Implementação da palavra aleatória
-# 13/12/21 > Implementa a estrutura de repetição de continuar/sair do jogo
-# 13/12/21 > Correção de bug nos tracinhos da forca
+# 14/12/21 > Implementa nova oportunidade para caracteres especiais
