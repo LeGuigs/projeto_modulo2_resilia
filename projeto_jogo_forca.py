@@ -14,6 +14,20 @@ def palavra_aleatoria_dici(dicionario_com_palavras_secretas):       # Escolhendo
     uma_palavra_aleatoria = random.choice(list(dicionario_com_palavras_secretas.keys()))
     return uma_palavra_aleatoria
 
+def mensagem_mais_tracinhos_da_forca(msg, palavra_secreta, forca):     # De acordo com a quantidade de letras da palavra
+    if len(palavra_secreta) == 4:
+        print(msg, forca[0], forca[1], forca[2], forca[3])
+    elif len(palavra_secreta) == 5:
+        print(msg, forca[0], forca[1], forca[2], forca[3], forca[4])
+    elif len(palavra_secreta) == 6:
+        print(msg, forca[0], forca[1], forca[2], forca[3], forca[4], forca[5])
+    elif len(palavra_secreta) == 7:
+        print(msg, forca[0], forca[1], forca[2], forca[3], forca[4], forca[5], forca[6])
+    elif len(palavra_secreta) == 8:
+        print(forca[0], forca[1], forca[2], forca[3], forca[4], forca[5], forca[6], forca[7])
+    else:
+        print(msg, forca[0], forca[1], forca[2], forca[3], forca[4], forca[5], forca[6], forca[7], forca[8])
+
 def game(palavra_secr,tracos_forca, numero_de_chances):
         
     falta_na_forca = tracos_forca.count('_')       # Indicador de forca incompleta ou não
@@ -28,12 +42,12 @@ def game(palavra_secr,tracos_forca, numero_de_chances):
             
             if chute == letra:      # Se chute/letra do usuário é igual a variável letra, então vai ser adicionado a letra na lista que está dentro do dicionário
                 tracos_forca[ind] = letra        # na posição de acordo com o valor do índice (ind)
-                print('Acertou!',tracos_forca[0], tracos_forca[1], tracos_forca[2], tracos_forca[3], tracos_forca[4])
+                mensagem_mais_tracinhos_da_forca('Acertou!! ', palavra_secr, tracos_forca)      # trancinhos vão aparecer de acordo com a quantidade de letras da palavra
             
             ind += 1
     else:                       # Senão, chances -1 até chegar 0
         numero_de_chances -= 1
-        print(f'Errou!! ',tracos_forca[0], tracos_forca[1], tracos_forca[2], tracos_forca[3], tracos_forca[4])
+        mensagem_mais_tracinhos_da_forca('Errou!! ', palavra_secr, tracos_forca)      # trancinhos vão aparecer de acordo com a quantidade de letras da palavra
     
     enforcou = numero_de_chances == 0         # variável enforcou recebe True se variável chances vale 0  
     acertou = '_' not in tracos_forca      # variável acertou recebe True se variável/lista forca não conter underscore (-)
