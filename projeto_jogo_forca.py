@@ -70,24 +70,37 @@ def multiplayer(quantidade_de_jogadores, nomes_dos_jogadores):
 
     ps = palavras()     # Chamando o dicionario com as palavras secretas e traços da forca 
     print(ps)
+    jogar = True
 
+    while jogar == True:    # Enquanto usuário escolher 'sim' o jogo se repetirá
 
-    plvr_aleatoria = palavra_aleatoria_dici(ps)             
-        
-    for palavra, forca in ps.items():   # PALAVRA e FORCA percorre o dicionário palavras_secretas, respectivamente,
-        if palavra == plvr_aleatoria:
+        plvr_aleatoria = palavra_aleatoria_dici(ps)             
             
-            enforcou, acertou, chances = False, False, 6
-            while enforcou == False and acertou == False:    # Enquanto chances vale + que 0 e a forca ainda está incompleta vai loopar.
-                                                            # procurando por: CHAVES (palavra) e VALOR (underscore/letras acertadas)    
+        for palavra, forca in ps.items():   # PALAVRA e FORCA percorre o dicionário palavras_secretas, respectivamente,
+            if palavra == plvr_aleatoria:
                 
-                (enforcou, acertou, chances) = game(palavra, forca, chances)    # Aqui rola a mágica / JOGO da Forca
-            
-            if enforcou == True:
-                print('Enforcou! Tente na próxima.')
-            elif acertou == True:
-                print('Parabéns, Você acertou todas as palavras!!', palavra.capitalize())
+                enforcou, acertou, chances = False, False, 6
+                while enforcou == False and acertou == False:    # Enquanto chances vale + que 0 e a forca ainda está incompleta vai loopar.
+                                                                # procurando por: CHAVES (palavra) e VALOR (underscore/letras acertadas)    
+                    
+                    (enforcou, acertou, chances) = game(palavra, forca, chances)    # Aqui rola a mágica / JOGO da Forca
                 
+                if enforcou == True:
+                    print('Enforcou! Tente na próxima.')
+                elif acertou == True:
+                    print('Parabéns, Você acertou todas as palavras!!', palavra.capitalize())
+                
+                jogar = input('Quer jogar ainda? [SIM] ou [NÃO] \n>>> ')
+                jogar = jogar.lower().strip()
+                
+                while jogar != 'sim' and jogar != 'não':
+                    jogar = input('Não entendi a sua resposta. Quer jogar ainda? [SIM] ou [NÃO] \n>>> ')
+                    jogar = jogar.lower().strip()
+                
+                if jogar == 'sim':
+                    jogar = True
+                else:
+                    jogar = False    
 
 # Chamando a função com os nomes e as quantidades de jogadores       
 (qtd_jogadores, nomes_jogadores) = qtd_nome_dos_players()
@@ -105,5 +118,5 @@ else:
     
 # Atualizações:
 # 13/12/21 > Implementação da palavra aleatória
-# 13/12/21 > escolha do usuário de continuar/sair do jogo
+# 13/12/21 > Implementa a estrutura de repetição de continuar/sair do jogo
 # 13/12/21 > Correção de bug nos tracinhos da forca
