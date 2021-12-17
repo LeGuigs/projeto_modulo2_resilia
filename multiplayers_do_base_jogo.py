@@ -9,7 +9,7 @@ def multiplayers():
     dici_vez_jogador = {}
     
     while multiplayers not in range(1,5):
-        print('Deu zebra')
+        print('Deu zebra!')
     
     cont = 0
     for jogador in range(multiplayers):
@@ -48,7 +48,7 @@ def multiplayers():
                     del dici_vez_jogador[('id_jogador 1', nome1)]
                     
                 elif acertou == True:
-                    print('Parabéns, Você acertou todas as palavras!!', dici_vez_jogador[('id_jogador 1', nome1)].capitalize(),'\n\n')
+                    print('Parabéns, você acertou todas as palavras!!', dici_vez_jogador[('id_jogador 1', nome1)].capitalize(),'\n\n')
                     del dici_vez_jogador[('id_jogador 1', nome1)]
                     
             nome2 = nomes_jogadores[1]
@@ -64,7 +64,7 @@ def multiplayers():
                     del dici_vez_jogador[('id_jogador 2', nome2)]
                     
                 elif acertou == True:
-                    print('Parabéns, Você acertou todas as palavras!!', dici_vez_jogador[('id_jogador 2', nome2)].capitalize(),'\n\n')
+                    print('Parabéns, você acertou todas as palavras!!', dici_vez_jogador[('id_jogador 2', nome2)].capitalize(),'\n\n')
                     del dici_vez_jogador[('id_jogador 2', nome2)]
             
             if ('id_jogador 1', nome1) not in dici_vez_jogador and ('id_jogador 2', nome2) not in dici_vez_jogador:

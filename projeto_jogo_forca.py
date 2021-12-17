@@ -156,13 +156,13 @@ def qtd_nome_dos_players():
 
 def boas_vindas(quantidade_de_jogadores, nomes_dos_jogadores):
     
-    print(f'\nBEM_VINDO A FORCA')
+    print(f'\nSEJA BEM-VINDO(A) AO JOGO DA FORCA!')
     
     for posicao in range(len(nomes_dos_jogadores)):
         print(f'\tJogador {posicao+1}: ',nomes_dos_jogadores[posicao])
         
-    print(f'\nJOGO COM {quantidade_de_jogadores} PLAYERS\nA palavra secreta é umas das palavras reservadas ou fuções Built-ints do Python. Boa sorte!')
-    pausa = input('Dê ENTER para prosseguir.\n')
+    print(f'\nJOGO COM {quantidade_de_jogadores} PLAYERS\nA palavra secreta é uma das palavras reservadas ou funções Built-in do Python. Boa sorte!')
+    pausa = input('Aperte ENTER para prosseguir.\n')
     
 '''Os parâmetros da multiplayer() meio que não serve para nada NO MOMENTO, mas servirão...'''
 def multiplayer(quantidade_de_jogadores, nomes_dos_jogadores):
