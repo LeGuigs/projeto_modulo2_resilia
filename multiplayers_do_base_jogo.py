@@ -36,7 +36,9 @@ def multiplayers():
             
             nome1 = nomes_jogadores[0]
             if ('id_jogador 1', nome1) in dici_vez_jogador:     # JOGADOR 1
-                print(f'Essa é a partida do jogador 1: {nome1}') 
+                
+                print(f'Essa é a partida do jogador 1: {nome1}')
+                
                 erro = False    
                 while not erro:
                 
@@ -47,9 +49,11 @@ def multiplayers():
                     print('E enforcou! Tente na próxima.\n\n')
                     del dici_vez_jogador[('id_jogador 1', nome1)]
                     
+                    
                 elif acertou == True:
-                    print('Parabéns, você acertou todas as palavras!!', dici_vez_jogador[('id_jogador 1', nome1)].capitalize(),'\n\n')
+                    print('Parabéns, você acertou todas as letras!!', dici_vez_jogador[('id_jogador 1', nome1)].upper(),'\n\n')
                     del dici_vez_jogador[('id_jogador 1', nome1)]
+                    
                     
             nome2 = nomes_jogadores[1]
             if ('id_jogador 2', nome2) in dici_vez_jogador:
@@ -64,12 +68,12 @@ def multiplayers():
                     del dici_vez_jogador[('id_jogador 2', nome2)]
                     
                 elif acertou == True:
-                    print('Parabéns, você acertou todas as palavras!!', dici_vez_jogador[('id_jogador 2', nome2)].capitalize(),'\n\n')
+                    print('Parabéns, você acertou todas as letras!!', dici_vez_jogador[('id_jogador 2', nome2)].upper(),'\n\n')
                     del dici_vez_jogador[('id_jogador 2', nome2)]
             
             if ('id_jogador 1', nome1) not in dici_vez_jogador and ('id_jogador 2', nome2) not in dici_vez_jogador:
-                print('fim de jogo')
-                tem_alguem_jogando = False
+                print('=-=-FIM DE JOGO!!-=-=\n\n')
+                tem_alguem_jogando = False                
         
     elif multiplayers == 3:
         print('Estamos em construção, tente outro número (tipo, 2).')

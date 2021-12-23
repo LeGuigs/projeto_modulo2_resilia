@@ -124,9 +124,12 @@ def game(palavra_secr,tracos_forca, numero_de_chances):
                 sleep(0.1)
                 mensagem_mais_tracinhos_da_forca('\nAcertou!! ', palavra_secr, tracos_forca)      # trancinhos vão aparecer de acordo com a quantidade de letras da palavra
                 print('\n \n \n')
-                errou = False
             ind += 1
-             
+        errou = False
+            
+        if falta_na_forca == 1:
+            errou = True
+                         
     elif chute in caracteres_especiais:
         print(f'Caracter especial usado ({chute}). Tente novamente!')           
                     
@@ -136,11 +139,12 @@ def game(palavra_secr,tracos_forca, numero_de_chances):
         sleep(0.1)
         mensagem_mais_tracinhos_da_forca('\nErrou!! ', palavra_secr, tracos_forca)
         print('\n \n \n')
-        
+        desenha_forca(numero_de_chances)
         desenha_forca_final(numero_de_chances)
+        print('\n \n \n')
                 
     enforcou = numero_de_chances == 0         # variável enforcou recebe True se variável chances vale 0  
-    acertou = '_' not in tracos_forca      # variável acertou recebe True se variável/lista forca não conter underscore (-)
+    acertou = falta_na_forca == 1      # variável acertou recebe True se variável/lista forca não conter underscore (-)
     return (enforcou, acertou, numero_de_chances, errou)
 
 def boas_vindas(quantidade_de_jogadores, nomes_dos_jogadores):

@@ -77,10 +77,6 @@ def desenha_forca(chances):
 def desenha_forca_final(chances):
         
     if chances == 0:
-        print("  _______     ")
-        sleep(0.1)
-        print(" |/      |    ")
-        sleep(0.1)
         print(" |      (_)   ")
         sleep(0.1)
         print(" |      \|/   ")
@@ -189,7 +185,7 @@ def multiplayer(quantidade_de_jogadores, nomes_dos_jogadores):
                 if enforcou:
                     print('E enforcou! Tente na próxima.\n\n')
                 elif acertou:
-                    print('Parabéns, você acertou todas as letras!!', palavra.capitalize(), '\n\n')
+                    print('Parabéns, você acertou todas as letras!!', palavra.upper(), '\n\n')
                 
                 jogar = input('Quer jogar ainda? [SIM] ou [NÃO] \n>>> ')
                 jogar = jogar.lower().strip()
